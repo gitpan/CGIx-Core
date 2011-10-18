@@ -9,11 +9,11 @@ CGIx::Core - Rapid, Simple CGI application development
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-$CGIx::CORE::VERSION = '0.01';
+$CGIx::CORE::VERSION = '0.02';
 
 =head1 DESCRIPTION
 
