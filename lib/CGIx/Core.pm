@@ -9,11 +9,15 @@ CGIx::Core - Rapid, Simple CGI application development
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-$CGIx::CORE::VERSION = '0.02';
+$CGIx::CORE::VERSION = '0.03';
+
+use base qw/
+    CGIx::Core::Request
+/;
 
 =head1 DESCRIPTION
 
@@ -264,22 +268,24 @@ sub query_params {
     else { return 0; }
 }
 
-=head2 body_params
+sub req {
+    my $self = shift;
 
-The same as query_params but for POST requests.
+    my $params = {};
+    $params->{query_params} = $self->{query_params};
+    $params->{body_params} = $self->{body_params};
+    return bless $params, 'CGIx::Core::Request';
+}
 
-    $c->stash(password => $c->body_params('password'));
+=head1 AUTHOR
+
+Brad Haywood <brad@geeksware.net>
+
+=head1 LICENSE
+
+You may distribute this code under the same terms as Perl itself.
 
 =cut
-
-sub body_params {
-    my ($self, $key) = @_;
-
-    if (exists $self->{body_params}->{$key}) {
-        return $self->{body_params}->{$key};
-    }
-    else { return 0; }
-}
 
 1;
 

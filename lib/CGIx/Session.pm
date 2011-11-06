@@ -6,11 +6,11 @@ CGIx::Session - Plugin module for CGIx to handle basic session management
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -139,4 +139,15 @@ sub DESTROY {
     use Data::Dumper;
     print Dumper($self->{session}) . "\n";
 }
+
+=head1 AUTHOR
+
+Brad Haywood <brad@geeksware.net>
+
+=head1 LICENSE
+
+You may distribute this code under the same terms as Perl itself.
+
+=cut
+
 1;

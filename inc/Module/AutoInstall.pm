@@ -395,7 +395,7 @@ sub _install_cpanplus {
         $makeflags->{UNINST} = 1 unless exists $makeflags->{UNINST};
 
     } else {
-        # 0.02 and below uses a scalar
+        # 0.03 and below uses a scalar
         $makeflags = join( ' ', split( ' ', $makeflags ), 'UNINST=1' )
           if ( $makeflags !~ /\bUNINST\b/ and eval qq{ $> eq '0' } );
 
