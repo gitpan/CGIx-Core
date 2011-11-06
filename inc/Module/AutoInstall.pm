@@ -391,11 +391,11 @@ sub _install_cpanplus {
     # if we're root, set UNINST=1 to avoid trouble unless user asked for it.
     my $makeflags = $conf->get_conf('makeflags') || '';
     if ( UNIVERSAL::isa( $makeflags, 'HASH' ) ) {
-        # 0.03+ uses a hashref here
+        # 0.04+ uses a hashref here
         $makeflags->{UNINST} = 1 unless exists $makeflags->{UNINST};
 
     } else {
-        # 0.03 and below uses a scalar
+        # 0.04 and below uses a scalar
         $makeflags = join( ' ', split( ' ', $makeflags ), 'UNINST=1' )
           if ( $makeflags !~ /\bUNINST\b/ and eval qq{ $> eq '0' } );
 

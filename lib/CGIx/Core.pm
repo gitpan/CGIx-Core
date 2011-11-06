@@ -9,11 +9,11 @@ CGIx::Core - Rapid, Simple CGI application development
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-$CGIx::CORE::VERSION = '0.03';
+$CGIx::CORE::VERSION = '0.04';
 
 use base qw/
     CGIx::Core::Request
@@ -244,29 +244,18 @@ sub process {
             WRAPPER      => "view/$self->{wrapper}"||undef,
             START_TAG => quotemeta('<%'),
             END_TAG   => quotemeta('%>'),
+            ANYCASE  => 1,
     );
     my $fname = $0;
     my ($name, $path, $suffix) = fileparse($fname, '\.[^\.]*');
     $self->{stash}->{tt}->process($temp||$name . '.tt', $self->{stash}, $var||undef);
 }
 
-=head2 query_params
+=head2 req
 
-Return a value set by the GET method or 0 on failure.
-
-    if ($c->query_params('name')) { $c->stash(name => $c->query_params('name'); }
-    else { $c->stash(name => 'Anonymous'); }
+Access to L<CGIx::Core::Request>. Used for GET and POST methods.
 
 =cut
-
-sub query_params {
-    my ($self, $key) = @_;
-
-    if (exists $self->{query_params}->{$key}) {
-        return $self->{query_params}->{$key};
-    }
-    else { return 0; }
-}
 
 sub req {
     my $self = shift;

@@ -1,6 +1,6 @@
 package CGIx::Core::Request;
 
-$CGIx::Core::Request = '0.03';
+$CGIx::Core::Request = '0.04';
 
 =head1 CGIx::Core::Request
 
